@@ -9,15 +9,13 @@ description: |
 grade: devel
 confinement: classic
 
-lint:
-  ignore:
-    - library
-
 apps:
   example-python-ctypes:
     # This refers to the installed location of the program at build-time.
     # When the snap is installed, it will be available as example-python-ctypes.
     command: bin/test-ctypes.py
+    environment:
+      LD_LIBRARY_PATH: /usr/lib:$LD_LIBRARY_PATH
 
 parts:
   example-part:

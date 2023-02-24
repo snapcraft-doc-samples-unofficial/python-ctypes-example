@@ -1,22 +1,23 @@
 #!/usr/bin/env python3
 
 import ctypes
-import sys
+import os, sys
 from ctypes.util import find_library
 
 if __name__ == '__main__':
 
-    path = find_library('z')
+    path = find_library('lzma')
     if not path:
-        sys.stderr.write('Failed to find zlib.\n')
+        sys.stderr.write('Failed to find liblzma.\n')
         sys.exit(1)
 
     try:
         lib = ctypes.cdll.LoadLibrary(path)
     except OSError:
-        sys.stderr.write('Failed to load zlib.\n')
+        sys.stderr.write('Failed to load liblzma.\n')
         sys.exit(1)
 
-    zlibVersion = lib.zlibVersion
-    zlibVersion.restype = ctypes.c_char_p
-    print("zlib version is " + str(zlibVersion(None), "ascii"))
+    print(os.getenv("LD_LIBRARY_PATH"))
+    fn = lib.lzma_version_string
+    fn.restype = ctypes.c_char_p
+    print("liblzma version is " + str(fn(None), "ascii"))
