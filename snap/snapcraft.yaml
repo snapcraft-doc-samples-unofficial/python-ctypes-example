@@ -14,15 +14,8 @@ apps:
     # This refers to the installed location of the program at build-time.
     # When the snap is installed, it will be available as example-python-ctypes.
     command: bin/test-ctypes.py
-    # This sets environment variables at run-time. In this example, /usr/lib is
-    # put at the start of the library path so that ctypes finds libraries on the
-    # system first.
-    environment:
-      LD_LIBRARY_PATH: /usr/lib:$LD_LIBRARY_PATH
 
 parts:
   example-part:
     source: .
     plugin: python
-    python-packages:
-      - pip==20.0.2
