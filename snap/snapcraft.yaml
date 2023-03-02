@@ -19,3 +19,11 @@ parts:
   example-part:
     source: .
     plugin: python
+    # Override the build to perform a normal build then patch ctypes to fix the
+    # run-time library paths.
+    override-build: |
+      snapcraftctl build
+      $SNAPCRAFT_PROJECT_DIR/snap/local/snapcraft-override-build.sh
+    stage-packages:
+      - libpython3.10-minimal
+      - libpython3.10-stdlib
