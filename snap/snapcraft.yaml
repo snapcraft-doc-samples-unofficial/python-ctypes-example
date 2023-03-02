@@ -23,7 +23,7 @@ parts:
     # run-time library paths.
     override-build: |
       snapcraftctl build
-      $SNAPCRAFT_PROJECT_DIR/snap/local/snapcraft-override-build.sh
+      $SNAPCRAFT_PROJECT_DIR/snap/local/patch-ctypes.sh
     # These packages need to be made available so that the build step can patch
     # ctypes.
     stage-packages:
