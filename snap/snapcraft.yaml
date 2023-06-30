@@ -27,6 +27,7 @@ parts:
     # These packages need to be made available so that the build step can patch
     # ctypes.
     stage-packages:
+      - python3.10-minimal
       - libpython3.10-minimal
       - libpython3.10-stdlib
     # This resolves warnings reported by the classic linter for Snapcraft 3.7.
