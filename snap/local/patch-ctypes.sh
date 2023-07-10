@@ -3,9 +3,9 @@
 set -e
 set -x
 
-CTYPES_INIT=${SNAPCRAFT_PART_INSTALL}`python3 -c 'import ctypes; print(ctypes.__file__)'`
+CTYPES_INIT=`python3 -c 'import ctypes; print(ctypes.__file__)'`
 CTYPES_INIT_ORIG=${CTYPES_INIT}.orig
-SITE_PY=${SNAPCRAFT_PART_INSTALL}`python3 -c 'import site; print(site.__file__)'`
+SITE_PY=`python3 -c 'import site; print(site.__file__)'`
 
 # Restore patched files
 [ -f "patched/ctypes/__init__.py.orig" ] && mv "patched/ctypes/__init__.py.orig" "${CTYPES_INIT}"
